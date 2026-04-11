@@ -1,0 +1,13 @@
+[project]
+name = "music-player"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "ffpyplayer>=4.5.3",
+    "kivy>=2.3.1",
+    "kivymd",
+    "mutagen>=1.47.0",
+]
+
+[tool.uv.sources]
+kivymd = { git = "https://github.com/kivymd/KivyMD.git", rev = "master" }
