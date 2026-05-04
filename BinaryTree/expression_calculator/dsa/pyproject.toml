@@ -1,0 +1,12 @@
+[project]
+name = "expression-calculator"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "kivy>=2.3.1",
+    "kivymd",
+]
+
+[tool.uv.sources]
+kivymd = { git = "https://github.com/kivymd/KivyMD.git", rev = "master" }
+

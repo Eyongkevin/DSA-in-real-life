@@ -1,0 +1,80 @@
+MDScreen:
+
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: "20dp"
+        spacing: "15dp"
+
+        # 🔼 TOP SECTION (wrap content, stays compact)
+        MDBoxLayout:
+            orientation: "vertical"
+            spacing: "15dp"
+            size_hint_y: None
+            height: self.minimum_height
+
+            # 🔷 Header
+            MDLabel:
+                text: "EvalTree"
+                halign: "center"
+                font_style: "Headline"
+                bold: True
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            MDLabel:
+                text: "Expression Tree Calculator"
+                halign: "center"
+                theme_text_color: "Secondary"
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            # ⬜ Input Field
+            MDTextField:
+                id: expression_input
+                mode: "outlined"
+                size_hint_y: None
+                height: "56dp"
+                on_text_validate:
+                    app.solve_expression(self.text)
+
+                MDTextFieldHelperText:
+                    text: "e.g. (3 + 5) * 2"
+                    mode: "on_focus"
+
+            # 🔘 Buttons
+            MDBoxLayout:
+                spacing: "10dp"
+                size_hint_y: None
+                height: "50dp"
+
+                MDButton:
+                    style: "filled"
+                    on_release:
+                        app.solve_expression(expression_input.text)
+                    MDButtonText:
+                        text: "Solve"
+
+                MDButton: 
+                    style: "outlined"
+                    on_release:
+                        app.clear_input()
+                    MDButtonText:
+                        text: "Clear"
+
+            # 📺 Result Card
+            MDCard:
+                padding: "15dp"
+                radius: [15,]
+                size_hint_y: None
+                height: "80dp"
+
+                MDLabel:
+                    id: result_label
+                    text: "Answer:"
+                    halign: "center"
+                    font_style: "Title"
+
+        # 🌳 TREE SECTION (takes ALL remaining space)
+        MDCard:
+            size_hint_y: 1
+            padding: "10dp"
